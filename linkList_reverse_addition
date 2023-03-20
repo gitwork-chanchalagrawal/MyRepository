@@ -1,0 +1,82 @@
+
+Problem:
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+        ListNode head= l1;
+        int number1=0;
+        while(head.next!=null)
+        {
+           int num=head.val;
+            
+            number1=number1*10+num;
+           head=head.next;
+        }
+        int num=head.val;
+        number1=number1*10+num;
+
+        //System.out.println(number1);
+
+
+        ListNode head2= l2;
+        int number2=0;
+        while(head2.next!=null)
+        {
+           int num2=head2.val;
+            
+            number2=number2*10+num2;
+           head2=head2.next;
+        }
+        int num2=head2.val;
+        number2=number2*10+num2;
+        //   ListNode dummy = new ListNode(0);
+        // ListNode curr = dummy;
+//ListNode curr=new ListNode();
+        int addition=number1+number2;
+        //System.out.println(addition);
+       
+       ListNode ans=new ListNode();
+      // ListNode curr=new
+        ListNode curr=new ListNode(addition%10);
+        ListNode currhead=curr;
+        addition=addition/10;
+        while(addition!=0 && curr!=null)
+        {
+        //     curr=digit;
+            
+        //  curr.next=new ListNode(addition%10);
+        //    // ans=ans.next;
+        //     addition=addition/10;
+          
+            //  while(curr!=null)
+            //  {
+                  curr.next=new ListNode(addition%10);
+                  curr=curr.next;
+             // }
+          
+          addition=addition/10;
+
+
+         }
+         return currhead;
+
+
+
+        
+    }
+}
