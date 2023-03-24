@@ -1,0 +1,59 @@
+class Solution {
+    public boolean isValid(String str) {
+        Stack<Character> s=new Stack<Character>();
+        int counterOpen=0;
+        int counterClose=0;
+        if(str.length()==0)
+        return false;
+        char check='0';
+        boolean flag= true;
+        char[] arr=str.toCharArray();
+        for(int i =0;i<arr.length;i++)
+        {   
+           // flag=true;
+            if((arr[i] == '(') || (arr[i] == '{') ||(arr[i] == '[')){
+           // System.out.println("reached");
+           counterOpen++;
+            s.push(arr[i]);
+            System.out.println("open"+s);}
+            else 
+            {
+                
+                if(counterOpen==0)
+                return false;
+                counterClose++;
+                if(counterClose>counterOpen)
+                return false;
+                
+               check=s.pop();
+               System.out.println(check+"-----------"+arr[i]);
+               switch(check)
+               {
+                    case '{':
+                    if(arr[i]!='}')
+                       flag=false;
+                       break;
+                    case '(':
+                 //   System.out.println(":)");
+                        if(arr[i]!=')')
+                        flag=false;
+                        break;
+                    case '[':
+                        if(arr[i]!=']')
+                        flag=false;
+                        break;
+                        
+               }
+            }
+        }
+        if(flag==false)
+        return false;
+        else {
+            if(counterOpen==counterClose)
+            return true;
+            else return false;}
+            
+
+        
+    }
+}
