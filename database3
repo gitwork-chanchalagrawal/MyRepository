@@ -1,0 +1,8 @@
+Write an SQL query to report all the duplicate emails. Note that it's guaranteed that the email field is not NULL.
+
+Return the result table in any order.
+
+select distinct(p.email) as Email 
+from person p inner join person s
+on p.email = s.email and p.id!=s.id;
+#where p.email = s.email;
