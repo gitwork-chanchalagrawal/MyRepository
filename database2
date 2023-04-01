@@ -1,0 +1,14 @@
+
+
+
+Write an SQL query to find the employees who earn more than their managers.
+
+Return the result table in any order.
+
+
+
+
+select e.name as employee
+from employee e inner join employee s
+on e.managerid=s.id
+where e.salary>s.salary;
